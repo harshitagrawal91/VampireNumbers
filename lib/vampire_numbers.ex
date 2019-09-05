@@ -1,25 +1,26 @@
 defmodule VampireNumbers do
-    def find_pairs(_number) do
-      num_length = find_num_length(_number)
+    def find_pairs(number) do
+      num_length = find_num_length(number)
       half_num_length = div(num_length, 2)
-      one_half = trunc(_number/ :math.pow(10, half_num_length))
-      last  =  round(:math.sqrt(_number))
+      one_half = trunc(number/ :math.pow(10, half_num_length))
+      last  =  round(:math.sqrt(number))
       find_pairs = fn i ->
-          if(rem(_number, i) == 0) do
-            {i, div(_number, i)}
+          if(rem(number, i) == 0) do
+            {i, div(number, i)}
           else
             false
           end
       end
       list_all_pairs = Enum.map(one_half..last, find_pairs)
                       |>Enum.reject(fn x -> x == false end)
+      list_all_pairs
     end
 
     def get_factors(n) do
       if rem(find_num_length(n), 2) == 1 do
         false
       else
-        half = div(length(to_char_list(n)), 2)
+        half = div(length(to_charlist(n)), 2)
         sorted = Enum.sort(String.codepoints("#{n}"))
 
         list_all_pairs = find_pairs(n)
@@ -40,13 +41,14 @@ defmodule VampireNumbers do
           output_list  = merge_list(fangs, lt)
           str = ""
           str = String.trim_leading(concat_string(output_list, str))
+          str
         else
           false
         end
       end
     end
 
-    defp find_num_length(n), do: length(to_char_list(n))
+    defp find_num_length(n), do: length(to_charlist(n))
 
     defp concat_string([h|t], str) do
       str = str <> " " <> Kernel.inspect(h)
@@ -64,9 +66,9 @@ defmodule VampireNumbers do
     defp merge_list([], lt), do: lt
   end
 
-  defmodule Test_v  do
-    def do_test(n1,n2) do
-      n1..n2 |> Task.async_stream(&VampireNumbers.get_factors/1,max_concurrency: 25)
+  defmodule TestVampire  do
+    def main(low, high) do
+      low..high |> Task.async_stream(&VampireNumbers.get_factors/1,max_concurrency: 25)
       |>Enum.map(fn({:ok, result}) -> result end)
       |>Enum.reject(fn x -> x == false end)
       |>Enum.each(fn x -> IO.puts(x) end)
