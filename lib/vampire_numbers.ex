@@ -46,14 +46,6 @@ defmodule VampireNumbers do
       end
     end
 
-    def get_vampire_nums(lower_bound, upper_bound) do
-      get_factors_vampire = fn item ->
-        str = get_factors(item)
-        end
-      all_vampire_list = Enum.map(lower_bound .. upper_bound, get_factors_vampire)
-      |>Enum.reject(fn x -> x == false end)
-    end
-
     defp find_num_length(n), do: length(to_char_list(n))
 
     defp concat_string([h|t], str) do
@@ -74,7 +66,10 @@ defmodule VampireNumbers do
 
   defmodule Test_v  do
     def do_test(n1,n2) do
-      all_vampire_nums = VampireNumbers.get_vampire_nums(n1, n2)
-      Enum.each(all_vampire_nums, fn x -> IO.puts(x) end)
+      n1..n2 |> Task.async_stream(&VampireNumbers.get_factors/1,max_concurrency: 25)
+      |>Enum.map(fn({:ok, result}) -> result end)
+      |>Enum.reject(fn x -> x == false end)
+      |>Enum.each(fn x -> IO.puts(x) end)
+
     end
   end
