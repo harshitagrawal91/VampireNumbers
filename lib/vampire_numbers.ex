@@ -68,10 +68,13 @@ defmodule VampireNumbers do
 
   defmodule TestVampire  do
     def main(low, high) do
-      low..high |> Task.async_stream(&VampireNumbers.get_factors/1,max_concurrency: 25)
-      |>Enum.map(fn({:ok, result}) -> result end)
-      |>Enum.reject(fn x -> x == false end)
-      |>Enum.each(fn x -> IO.puts(x) end)
-
+      if(low <= high) do
+        low..high |> Task.async_stream(&VampireNumbers.get_factors/1,max_concurrency: 30)
+        |>Enum.map(fn({:ok, result}) -> result end)
+        |>Enum.reject(fn x -> x == false end)
+        |>Enum.each(fn x -> IO.puts(x) end)
+      else
+        IO.puts("Input Error!! #{low} should be less than equal to #{high}")
+      end
     end
   end
