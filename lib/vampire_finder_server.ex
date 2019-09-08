@@ -15,7 +15,7 @@ defmodule Vampire_finder_server do
   end
 
   def get_vampire(pid) do
-    GenServer.call(pid, :next_number)
+    GenServer.call(pid, :next_number, :infinity)
   end
 
   ## GenServer Implementation

@@ -72,17 +72,17 @@ defmodule Vampire_supervisor do
       {range_of_threads, range}
     else
       if range_of_vampire_nums <= 5000000 do
-        range_of_threads = 1..20
-        range = div((high - low + 1), 20)
+        range_of_threads = 1..100
+        range = div((high - low + 1), 100)
         {range_of_threads, range}
       else
         if range_of_vampire_nums <= 10000000 do
-          range_of_threads = 1..25
-          range = div((high - low + 1), 25)
+          range_of_threads = 1..1000
+          range = div((high - low + 1), 1000)
           {range_of_threads, range}
         else
-          range_of_threads = 1..50
-          range = div((high - low + 1), 50)
+          range_of_threads = 1..5000
+          range = div((high - low + 1), 5000)
           {range_of_threads, range}
         end
       end
