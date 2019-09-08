@@ -1,4 +1,12 @@
 defmodule VampireNumbers do
+  def get_vampire_nums(lower_bound, upper_bound) do
+    get_factors_vampire = fn item ->
+      get_factors(item)
+    end
+    Enum.map(lower_bound..upper_bound, get_factors_vampire)
+    |> Enum.reject(fn x -> x == false end)
+  end
+
   def find_pairs(number) do
     num_length = find_num_length(number)
     half_num_length = div(num_length, 2)
@@ -80,20 +88,7 @@ defmodule VampireNumbers do
   defp merge_list([], lt), do: lt
 end
 
-defmodule TestVampire do
-  def main(low, high) do
-    if(low <= high) do
-      Task.Supervisor.async_stream(
-        Vampirenumbers.TaskSupervisor,
-        low..high,
-        &VampireNumbers.get_factors/1,
-        max_concurrency: 30
-      )
-      |> Enum.map(fn {:ok, result} -> result end)
-      |> Enum.reject(fn x -> x == false end)
-      |> Enum.each(fn x -> IO.puts(x) end)
-    else
-      IO.puts("Input Error!! #{low} should be less than equal to #{high}")
-    end
-  end
-end
+
+
+
+
