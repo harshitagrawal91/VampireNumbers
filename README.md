@@ -147,9 +147,10 @@ mix run proj1.exs 100000 900000
     sys 	0m0.221s
 
 ![](https://github.com/harshitagrawal91/VampireNumbers/tree/master/images/output.jpeg)
+
 ## 5. Largest Problem Solved ##
  
-mix run proj1.exs 100000000 200000000
+mix run proj1.exs 1 100000000
 
 ## 7. Team Members ##
 Harshit Agrawal--9041-1685
