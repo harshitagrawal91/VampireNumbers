@@ -9,11 +9,14 @@ Output: Print, on independent lines, first the number then its fangs. If there a
 ## 1. How to Run: ##
     1. Go inside project Directory  
     2. mix run proj1.exs 100000 200000
-
+    
 ## 2. Number of Worker & Size of Work Unit:
- The program was tested for a lot of combinations and 1/10th chunk of work for range 1 to 1000000 and 1/100th for range 1000000 to infinity was assigned to each process. This seemed to give us the most optimized output.
+ 10 workers are spawned for a range of 1 to 1000000 and 100 workers are spawned for a range of 1000001 to infinity.
 
-## 3. Result  
+## 3. Number of Worker & Size of Work Unit:
+ The program was tested for a lot of combinations and 1/10th chunk of work for range 1 to 1000000 and 1/100th for range 1000001 to infinity was assigned to each process. This seemed to give us the most optimized output.
+
+## 4. Result  
 Command:- mix run proj1.exs 100000 200000
 
 Output:-
@@ -134,7 +137,7 @@ Output:-
 
 
  
-## 4. CPU time to Real time  ##
+## 5. CPU time to Real time  ##
 mix run proj1.exs 100000 200000
 
     real	0m2.410s
@@ -148,7 +151,7 @@ mix run proj1.exs 100000 900000
 
 ![](https://github.com/harshitagrawal91/VampireNumbers/tree/master/images/output.jpeg)
 
-## 5. Largest Problem Solved ##
+## 6. Largest Problem Solved ##
  
 mix run proj1.exs 1 100000000
 
