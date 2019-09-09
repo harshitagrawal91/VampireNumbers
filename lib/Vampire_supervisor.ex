@@ -1,6 +1,12 @@
 defmodule Vampire_supervisor do
+  @moduledoc """
+  A supervisor module that implements functions for invoking genserver modules and print the output.
+  """
   use DynamicSupervisor
 
+  @doc """
+  Start the supervisor
+  """
   def invoke_supervisor() do
     DynamicSupervisor.start_link(__MODULE__, :ok)
   end
@@ -9,6 +15,9 @@ defmodule Vampire_supervisor do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
 
+  @doc """
+  Start the workers
+  """
   def start_worker(super_pid) do
     child_spec = {Vampire_finder_server, []}
     DynamicSupervisor.start_child(super_pid, child_spec)
@@ -63,6 +72,9 @@ defmodule Vampire_supervisor do
                        |> Enum.each(fn x -> IO.puts(x) end)
   end
 
+  @doc """
+  Get the number of workers
+  """
   defp get_thread_config(low, high) do
     range_of_vampire_nums = high - low + 1
 

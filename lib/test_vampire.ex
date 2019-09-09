@@ -1,4 +1,11 @@
 defmodule TestVampire do
+  @moduledoc """
+  A module for testing the application.
+  """
+
+  @doc """
+  Starting point of the application
+  """
   def main(low, high) do
     if(low <= high) do
       {:ok, super_pid} = Vampire_supervisor.invoke_supervisor()

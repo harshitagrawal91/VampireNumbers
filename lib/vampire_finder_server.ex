@@ -1,7 +1,12 @@
 defmodule Vampire_finder_server do
+  @moduledoc """
+  A genserver module that implements functions for invoking vampire number module,
+  maintaining state and return the numbers to the supervisor.
+  """
   use GenServer
-
-  ## External API
+  @doc """
+  Start the genserver
+  """
   def start_link([]) do
     GenServer.start(__MODULE__, [])
   end
@@ -10,15 +15,21 @@ defmodule Vampire_finder_server do
     {:ok, [], 5_000_000}
   end
 
+  @doc """
+  Call handle_cast callback to calculate the vampire numbers
+  """
   def calculate_vampire({pid, low, high}) do
     GenServer.cast(pid, {:set_number, low, high})
   end
 
+  @doc """
+  Call handle_call callback to send the result to supervisor
+  """
   def get_vampire(pid) do
     GenServer.call(pid, :next_number, :infinity)
   end
 
-  ## GenServer Implementation
+  ## GenServer callback Implementation
   def handle_call(:next_number, _from, all_vampire_nums) do
     {:reply, all_vampire_nums, all_vampire_nums}
   end

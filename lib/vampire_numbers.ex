@@ -1,4 +1,11 @@
 defmodule VampireNumbers do
+  @moduledoc """
+  A module that finds the vampire numbers over a range.
+  """
+
+  @doc """
+  Get vampire numbers over a range
+  """
   def get_vampire_nums(lower_bound, upper_bound) do
     get_factors_vampire = fn item ->
       get_factors(item)
@@ -7,6 +14,9 @@ defmodule VampireNumbers do
     |> Enum.reject(fn x -> x == false end)
   end
 
+  @doc """
+  Find the pairs of a given number
+  """
   def find_pairs(number) do
     num_length = find_num_length(number)
     half_num_length = div(num_length, 2)
@@ -28,6 +38,9 @@ defmodule VampireNumbers do
     list_all_pairs
   end
 
+  @doc """
+  Get the fangs of a vampire number
+  """
   def get_factors(n) do
     if rem(find_num_length(n), 2) == 1 do
       false
