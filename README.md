@@ -10,10 +10,10 @@ Output: Print, on independent lines, first the number then its fangs. If there a
     1. Go inside project Directory  
     2. mix run proj1.exs 100000 200000
     
-## 2. Number of Worker & Size of Work Unit:
+## 2. Number of Worker:
  10 workers are spawned for a range of 1 to 1000000 and 100 workers are spawned for a range of 1000001 to infinity.
 
-## 3. Number of Worker & Size of Work Unit:
+## 3. Size of Work Unit:
  The program was tested for a lot of combinations and 1/10th chunk of work for range 1 to 1000000 and 1/100th for range 1000001 to infinity was assigned to each process. This seemed to give us the most optimized output.
 
 ## 4. Result  
