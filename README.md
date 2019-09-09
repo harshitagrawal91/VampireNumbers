@@ -149,7 +149,7 @@ mix run proj1.exs 100000 900000
     user	0m25.634s
     sys 	0m0.221s
 
-![](https://github.com/harshitagrawal91/VampireNumbers/tree/master/images/output.jpeg)
+![](https://github.com/harshitagrawal91/VampireNumbers/blob/master/images/output.jpeg)
 
 ## 6. Largest Problem Solved ##
  
