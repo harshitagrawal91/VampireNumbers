@@ -11,7 +11,7 @@ Output: Print, on independent lines, first the number then its fangs. If there a
     2. mix run proj1.exs 100000 200000
 
 ## 2. Number of Worker & Size of Work Unit:
-The Application is creating different numbers of worker depending on Range of numbers for the optimized performance. The program was tested for a lot of combinations and 1/10th chunk of work for range 1 to1000000 and 1/100th for range 1000000 to infinity to each process seemed to give us the most optimized output.
+ The program was tested for a lot of combinations and 1/10th chunk of work for range 1 to 1000000 and 1/100th for range 1000000 to infinity was assigned to each process. This seemed to give us the most optimized output.
 
 ## 3. Result  
 Command:- mix run proj1.exs 100000 200000
@@ -137,9 +137,9 @@ Output:-
 ## 4. CPU time to Real time  ##
 mix run proj1.exs 100000 200000
 
-    real	0m8.480s
-    user	0m9.865s
-    sys 	0m0.156s
+    real	0m2.410s
+    user	0m2.965s
+    sys 	0m0.056s
 mix run proj1.exs 100000 900000
 
     real	0m3.526s
@@ -154,4 +154,4 @@ mix run proj1.exs 100000000 200000000
 ## 7. Team Members ##
 Harshit Agrawal--9041-1685
 
-Shantanu Ghosh--
+Shantanu Ghosh--4311-4360
